@@ -89,7 +89,7 @@ def add_favourite(artwork_id):
         db.session.commit()
     return redirect(request.referrer)
 
-@app.route('/favourites/add/<int:artwork_id>', methods=['POST'])
+@app.route('/favourites/remove/<int:artwork_id>', methods=['POST'])
 @login_required
 def remove_favourite(artwork_id):
     fav = Favourite.query.filter_by(
