@@ -1,0 +1,5 @@
+Artist biography page
+Polish home.html hero section
+Add search functionality
+User accounts (v2)
+Deploy to Render

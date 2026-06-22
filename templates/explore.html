@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="mb-4">Explore</h2>
+    <div class="row">
+        {% for artwork in artworks %}
+        <div class="col-6 col-md-4 col-lg-3 mb-4">
+            <div class="card bg-dark h-100">
+                <a href="/artwork/{{ artwork.id }}">
+                <img src="{{ artwork.image_url }}"
+                     class="card-img-top"
+                     style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h6 class="card-title text-white">{{ artwork.title }}</h6>
+                    <p class="small text-white">{{ artwork.artist }}</p>
+                    <a href="/favourites/add/{{ artwork.id }}" class="btn btn-outline-light btn-sm">♥ Save</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- pagination -->
+    <div class="text-center mt-4">
+        <a href="/explore/{{ page - 1 }}" class="btn btn-outline-light me-2">← Previous</a>
+        <a href="/explore/{{ page + 1 }}" class="btn btn-outline-light">Next →</a>
+    </div>
+</div>
+{% endblock %}

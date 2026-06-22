@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="mb-4">My Favourites</h2>
+
+    {% if artworks %}
+    <div class="row">
+        {% for artwork in artworks %}
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card bg-dark h-100">
+                <img src="{{ artwork.image_url }}"
+                     class="card-img-top"
+                     style="height: 250px; object-fit: cover;">
+                <div class="card-body">
+                    <h6 class="card-title text-white">{{ artwork.title }}</h6>
+                    <p class="card-text text-muted small">{{ artwork.artist }}</p>
+                    <a href="/favourites/remove/{{ artwork.id }}" class="btn btn-outline-danger btn-sm">✕ Remove</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% else %}
+    <div class="text-center py-5">
+        <p class="text-muted">No favourites yet — go explore and save some art!</p>
+        <a href="/explore/1" class="btn btn-outline-light">Explore</a>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

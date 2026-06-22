@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center">
+
+        <img src="{{ image_url }}"
+             alt="{{ artwork.title }}"
+             style="max-width: 100%; max-height: 80vh;">
+
+        <h2 class="mt-4">{{ artwork.title }}</h2>
+        <p class="small text-white"> {{ artwork.artist }}</p>
+        <a href="/artwork/{{ artwork.id }}" class="btn btn-outline-light mt-3">View Details</a>
+
+    </div>
+</div>
+{% endblock %}
