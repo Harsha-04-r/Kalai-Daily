@@ -118,14 +118,15 @@ def register():
             flash('Password must be 8+ characters with at least one uppercase letter and one number.')
             return redirect(url_for('register'))
 
-        user = User(email=email,username=username,is_verified=True)
+        user = User(email=email, username=username, is_verified=True)
         user.set_password(password)
+
         db.session.add(user)
         db.session.commit()
+        login_user(user)
+        flash("Welcome to Kalai ")
+        return redirect(url_for('home'))
 
-        flash("Account created successfully!")
-
-        return redirect(url_for('login'))
     return render_template('register.html')
 
 
