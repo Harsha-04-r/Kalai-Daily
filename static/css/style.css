@@ -35,6 +35,11 @@ main {
     color: #ffffff !important;
 }
 
+.card form {
+    position: relative;
+    z-index: 10;
+}
+
 
 @media (max-width: 576px) {
     .card-title {
