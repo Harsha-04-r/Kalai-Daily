@@ -15,11 +15,16 @@ app = Flask(__name__)
 
 app.secret_key = os.getenv('SECRET_KEY', 'fallback_dev_key')
 
-
-
 database_url = os.getenv("DATABASE_URL")
 if database_url:
-    database_url = database_url.replace("postgres://", "postgresql://", 1)
+    database_url = database_url.replace(
+        "postgres://",
+        "postgresql://",
+        1
+    )
+else:
+    database_url = "sqlite:///kalai.db"
+
 app.config["SQLALCHEMY_DATABASE_URI"] = database_url
 
 db.init_app(app)
