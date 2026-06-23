@@ -13,7 +13,10 @@
     <div class="text-center mb-4">
         <h1>{{ artwork.title }}</h1>
         <p class="text fs-5">{{ artwork.artist }}</p>
-        <a href="/favourites/add/{{ artwork.id }}" class="btn btn-outline-light mt-2">♥ Save to Favourites</a>
+        <form action="{{ url_for('add_favourite', artwork_id=artwork.id) }}" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button type="submit" class="btn btn-outline-light btn-sm"> ♥ Save to Favourites </button>
+        </form>
     </div>
 
     <!-- details table -->

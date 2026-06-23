@@ -15,7 +15,10 @@
                 <div class="card-body">
                     <h6 class="card-title text-white">{{ artwork.title }}</h6>
                     <p class="small text-white">{{ artwork.artist }}</p>
-                    <a href="/favourites/add/{{ artwork.id }}" class="btn btn-outline-light btn-sm">♥ Save</a>
+                    <form action="{{ url_for('add_favourite', artwork_id=artwork.id) }}" method="POST">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <button type="submit" class="btn btn-outline-light btn-sm"> ♥ Save </button>
+                    </form>
                 </div>
             </div>
         </div>
